@@ -1,7 +1,6 @@
 "use client";
 import { supabaseBrowser } from "@/lib/supabase/browser";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 
 const initUser = {
 	created_at: "",
@@ -28,7 +27,7 @@ export default function useUser() {
 				// fetch user information profile
 				const { data: user } = await supabase
 					.from("profiles")
-					.select("*,subscription(*)")
+					.select("*,subscriptions(*)")
 					.eq("id", data.session.user.id)
 					.single();
 
